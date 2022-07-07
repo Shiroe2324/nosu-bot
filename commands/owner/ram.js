@@ -35,7 +35,7 @@ module.exports = {
             .addField('Memoria maxima', memoria.max)
             .addField('Memoria libre', memoria.free)
             .addField('Memoria usada por el bot', memoria.usedByProcess)
-            .setColor(0x2f3136);
+            .setColor('#2f3136');
 
         message.channel.send({ embeds: [embed], allowedMentions: { repliedUser: false } });
 
