@@ -10,7 +10,7 @@ module.exports = {
     name: 'eval',
     aliases: ['e', 'ev', 'eva'],
     creator: true,
-    async execute(message, args, MessageEmbed, Util, client, cmd, setCd, color, helper) {
+    async execute(message, args, MessageEmbed, client, setCd, color, helper) {
 
         const command = args.join(" ");
         if (!command) return message.channel.send("???");
@@ -26,10 +26,10 @@ module.exports = {
 
         const row = new Discord.MessageActionRow().addComponents(
             new Discord.MessageButton()
-            .setCustomId('clear')
-            .setLabel('Clear')
-            .setEmoji("❌")
-            .setStyle("DANGER")
+                .setCustomId('clear')
+                .setLabel('Clear')
+                .setEmoji("❌")
+                .setStyle("DANGER")
         );
 
         try {
@@ -45,10 +45,13 @@ module.exports = {
                 .addField(`**Entrada**`, `\`\`\`js\n${command}\n\`\`\``)
                 .addField(`**Salida**`, `\`\`\`js\n${inspect(evaled, { depth: 0 })}\n\`\`\``);
 
-            if (inspect(evaled, { depth: 0 }).length >= 2000) return message.channel.send({ content: 'el resultado de la evaluacion es muy largo' });
-
-            if (inspect(evaled, { depth: 0 }).length < 1024) message.channel.send({ embeds: [embed], components: [row] })
-            else message.channel.send({ content: `\`\`\`js\n${inspect(evaled, { depth: 0 })}\n\`\`\``, components: [row] });
+            if (inspect(evaled, { depth: 0 }).length >= 2000) {
+                message.channel.send({ content: 'el resultado de la evaluacion es muy largo' });
+            } else if (inspect(evaled, { depth: 0 }).length < 1024) {
+                message.channel.send({ embeds: [embed], components: [row] })
+            } else {
+                message.channel.send({ content: `\`\`\`js\n${inspect(evaled, { depth: 0 })}\n\`\`\``, components: [row] });
+            }
 
         } catch (err) {
             const embedfallo = new MessageEmbed()

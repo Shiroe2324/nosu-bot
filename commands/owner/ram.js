@@ -5,7 +5,7 @@ module.exports = {
     name: "ram",
     aliases: [],
     creator: true,
-    async execute(message, args, MessageEmbed, Util, client, cmd, setCd, color, helper) {
+    async execute(message, args, MessageEmbed, client, setCd, color, helper) {
 
         function getMemoryUsage() {
             const free = OS.freemem(); 

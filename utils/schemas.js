@@ -18,4 +18,4 @@ const UserSchema = new mongoose.Schema({
 module.exports = {
     user: mongoose.model('user', UserSchema),
     guild: mongoose.model('guild', GuildSchema)
-}
+};

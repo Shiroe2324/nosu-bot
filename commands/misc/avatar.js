@@ -3,7 +3,7 @@ const { MessageButton, MessageActionRow } = require('discord.js');
 module.exports = {
     name: 'avatar',
     aliases: ['av', 'image'],
-    async execute(message, args, MessageEmbed, Util, client, cmd, setCd, color, helper) {
+    async execute(message, args, MessageEmbed, client, setCd, color, helper) {
         const memberFind = helper.findMember(message, args);
         if (memberFind == 'No found user') return message.channel.send(`${client.emotes.error} | No pude encontrar a ese usuario`);
         const member = memberFind == 'No found mention' ? message.member : message.guild.members.cache.get(memberFind[0]);
@@ -44,9 +44,12 @@ module.exports = {
 
             const collector = msg.createMessageComponentCollector({ filter });
 
-            collector.on('collect', async int => {
+            collector.on('collect', async (int) => {
                 if (!member.avatarURL()) {
-                    return int.update({ embeds: [await embed(member.user.avatarURL({ dynamic: true, size: 2048 }))] });
+                    int.update({ 
+                        embeds: [await embed(member.user.avatarURL({ dynamic: true, size: 2048 }))],
+                        components: []
+                    });
                 } else if (int.customId === 'serverButton') {
                     int.update({
                         embeds: [await embed(member.avatarURL({ dynamic: true, size: 2048 }))],

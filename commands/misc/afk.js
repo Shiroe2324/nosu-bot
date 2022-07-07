@@ -4,7 +4,7 @@ module.exports = {
     name: 'afk',
     aliases: [],
     cd: 10000,
-    async execute(message, args, MessageEmbed, Util, client, cmd, setCd, color, helper) {
+    async execute(message, args, MessageEmbed, client, setCd, color, helper) {
 
         setCd()
         const guild = await schemas.guild.findOne({ guildID: message.guild.id });

@@ -1,7 +1,7 @@
 module.exports = {
     name: 'icon',
     aliases: ['iconserver', 'servericon'],
-    async execute(message, args, MessageEmbed, Util, client, cmd, setCd, color, helper) {
+    async execute(message, args, MessageEmbed, client, setCd, color, helper) {
 
         if (message.guild.iconURL() === null) return message.reply(`${client.emotes.error} | El servidor no cuenta con una imagen o icono`)
         

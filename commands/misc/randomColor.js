@@ -3,7 +3,7 @@ const superagent = require('superagent');
 module.exports = {
     name: 'randomcolor',
     aliases: ['randcolor', 'colorandom'],
-    async execute(message, args, MessageEmbed, Util, client, cmd, setCd, color, helper) {
+    async execute(message, args, MessageEmbed, client, setCd, color, helper) {
 
         var color = '';
         for (let x = 0; x < 6; x++) {

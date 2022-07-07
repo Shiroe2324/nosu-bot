@@ -3,7 +3,7 @@ const moment = require('moment');
 module.exports = {
     name: 'randomuser',
     aliases: ["rdu", "userandom", "urd"],
-    async execute(message, args, MessageEmbed, Util, client, cmd, setCd, color, helper) {
+    async execute(message, args, MessageEmbed, client, setCd, color, helper) {
 
         moment.updateLocale('es', {
             months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],

@@ -3,7 +3,7 @@ const superagent = require('superagent')
 module.exports = {
     name: 'hexcolor',
     aliases: ['colorhex'],
-    async execute(message, args, MessageEmbed, Util, client, cmd, setCd, color, helper) {
+    async execute(message, args, MessageEmbed, client, setCd, color, helper) {
         const Color = args[0]?.replace("#", "");
         const isOk = /^[0-9A-F]{6}$/i.test(Color);
 

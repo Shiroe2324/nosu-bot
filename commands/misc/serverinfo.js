@@ -4,7 +4,7 @@ module.exports = {
     name: 'server',
     aliases: ['serverinfo', 'infoserver'],
     cd: 6000,
-    async execute(message, args, MessageEmbed, Util, client, cmd, setCd, color, helper) {
+    async execute(message, args, MessageEmbed, client, setCd, color, helper) {
         setCd();
         moment.updateLocale('es', {
             months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],

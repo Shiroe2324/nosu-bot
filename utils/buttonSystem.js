@@ -1,6 +1,6 @@
 const { MessageActionRow, MessageButton } = require('discord.js');
 
-module.exports = async (message, args, embed, elementSize, elementFit) => {
+module.exports = async (message, embed, elementSize, elementFit) => {
 
     const createButton = (emoji, id, disabled) => {
         return new MessageButton()

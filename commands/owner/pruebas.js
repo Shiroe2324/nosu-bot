@@ -4,7 +4,7 @@ module.exports = {
     name: 'test',
     aliases: ["prueba", "pruebas"],
     creator: true,
-    async execute(message, args, MessageEmbed, Util, client, cmd, setCd, color, helper) {
+    async execute(message, args, MessageEmbed, client, setCd, color, helper) {
         const roleSize = {
             colors: {
                 red: message.guild.roles.resolve('925953717696622643').members.size,

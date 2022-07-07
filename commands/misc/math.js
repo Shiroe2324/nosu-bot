@@ -3,7 +3,7 @@ const math = require("math-expression-evaluator");
 module.exports = {
     name: 'math',
     aliases: ["calc"],
-    async execute(message, args, MessageEmbed, Util, client, cmd, setCd, color, helper) {
+    async execute(message, args, MessageEmbed, client, setCd, color, helper) {
 
         if (!args[0]) return message.channel.send(`${client.emotes.error} | Por favor ingrese una **expresion matematica**`);
 

@@ -19,11 +19,11 @@ module.exports = {
         const guild = await schemas.guild.findOne({ guildID: message.guild.id });
 
         if(message.content.toLowerCase().endsWith('hola') || message.content.toLowerCase().endsWith('ola')) {
-            message.reply('tu nariz entre mis bolas')
+            message.reply('tu nariz entre mis bolas');
         }
 
         if(message.content.toLowerCase().endsWith('que') || message.content.toLowerCase().endsWith('que?') || message.content.toLowerCase().endsWith('que.') || message.content.toLowerCase().endsWith('que!')) {
-            message.reply('so')
+            message.reply('so');
         }
         // ----------------------- AFK ----------------------- //
 
@@ -77,7 +77,7 @@ module.exports = {
             setTimeout(() => timeStamps.delete(message.author.id), cmd.cd);
         };
 
-        cmd.execute(message, args, MessageEmbed, Util, client, command, setCd, process.env.COLOR, helper).catch((err) => {
+        cmd.execute(message, args, MessageEmbed, client, setCd, process.env.COLOR, helper).catch((err) => {
             message.channel.send(`${client.emotes.error} | Ocurrió un error: **${err}**, puedes reportar este error con el comando **report**`);
             console.error(err);
         });

@@ -1,20 +1,14 @@
 const fs = require('fs');
 const { MessageEmbed, Util } = require('discord.js');
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
-const commandFolder = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-const commandFolderPath = fs.readdirSync('./commands').filter(file => !file.endsWith('.js'));
+const commandFolder = fs.readdirSync('./commands').filter(file => !file.endsWith('.js'));
 
-module.exports = async(client) => {
-    for (const file of commandFolder) {
-        const command = require(`./commands/${file}`);
-        client.commands.set(command.name, command);
-    }
-
-    for (const folder of commandFolderPath) {
-        const commandFilePath = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
-        for (const filePath of commandFilePath) {
-            const commandPath = require(`./commands/${folder}/${filePath}`);
-            client.commands.set(commandPath.name, commandPath);
+module.exports = async (client) => {
+    for (const folder of commandFolder) {
+        const commandFile = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
+        for (const file of commandFile) {
+            const command = require(`./commands/${folder}/${file}`);
+            client.commands.set(command.name, command);
         }
     }
 
